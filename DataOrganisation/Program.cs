@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace DataOrganisation
 {
@@ -8,8 +9,37 @@ namespace DataOrganisation
 
         static void Main(string[] args)
         {
-            Card randomCard = new Card((Values)random.Next(1,14), (Suits)random.Next(4));
-            Console.WriteLine(randomCard.Name);
+            while (true)
+            {
+                List<Card> cards = new List<Card>();
+                Console.Write("\nEnter the number of random cards you would like: ");
+                if (int.TryParse(Console.ReadLine(), out int numberOfCards))
+                {
+                    for (int i = 0; i < numberOfCards; i++)
+                    {
+                        cards.Add(RandomCard());
+                    }
+                }
+                else return;
+                PrintCards(cards);
+                cards.Sort(new CardComparerByValue());
+                Console.WriteLine("\n... sorting cards ...\n");
+                PrintCards(cards);
+            }
         }
+
+        public static Card RandomCard()
+        {
+               return new Card((Values)random.Next(1, 14), (Suits)random.Next(4));
+        }
+
+        public static void PrintCards(List<Card> cards)
+        {
+            foreach (Card card in cards)
+            {
+                Console.WriteLine(card.Name);
+            }
+        }
+
     }
 }
