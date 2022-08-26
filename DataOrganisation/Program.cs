@@ -37,7 +37,9 @@ namespace DataOrganisation
         {
             foreach (Card card in cards)
             {
-                Console.WriteLine(card.Name);
+                //Console.WriteLine(card.Name);
+                //overloaded Console.WriteLine method that calls the object's overriden ToString() method 
+                Console.WriteLine(card);
             }
         }
 
