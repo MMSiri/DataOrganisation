@@ -18,7 +18,7 @@ namespace DataOrganisation
 
         public override string ToString()
         {
-            return $"{Value} of {Suit}";
+            return Name;
         }
     }
 }
